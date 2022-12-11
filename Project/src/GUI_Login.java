@@ -101,10 +101,11 @@ public class GUI_Login extends JFrame {
 
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "无效用户,请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "无效输入,请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
                     textField1.setText(""); passwordField1.setText("");
                     buttonGroup1.clearSelection();
                 }
+                fBufferedReader.close();
             }
             catch (IOException ex){
                 System.out.println(ex.toString());

@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 import java.util.*;
 import javax.swing.*;
 /*
@@ -12,6 +13,8 @@ import javax.swing.*;
  * @author Brainrain
  */
 public class GUI_Register extends JDialog {
+
+    public ButtonGroup buttonGroup2 = new ButtonGroup();
     public GUI_Register(Window owner) {
         super(owner);
         GUI_Login.GUIflag=1;
@@ -28,6 +31,85 @@ public class GUI_Register extends JDialog {
         // TODO add your code here
         this.dispose();
         GUI_Login.GUIflag=0;
+    }
+
+    private void button3(ActionEvent e) {
+        // TODO add your code here
+        String username = textField2.getText();
+        String password = String.valueOf(passwordField3.getPassword());
+        int selectport=0;
+        if (radioButton3.isSelected() && !radioButton4.isSelected())
+            selectport=1;//教师端
+        else if(!radioButton3.isSelected() && radioButton4.isSelected())
+            selectport=2;//学生端
+
+        if(selectport==0) {
+            JOptionPane.showMessageDialog(null, "未选择身份,请选择身份！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            try{
+                File file=new File("E:\\大学\\专业课\\3.1Java\\用户数据.txt");
+                if(file.createNewFile()){
+                    System.out.println("用户登录数据加载成功！");
+                }
+                else{
+                    System.out.println("当前登录文件已存在");
+                }
+                FileReader fReader=new FileReader("E:\\大学\\专业课\\3.1Java\\用户数据.txt");
+                BufferedReader fBufferedReader = new BufferedReader(fReader);
+                String lineString;
+                System.out.println(username+"|"+password+"|");
+                int searchflag = 0;
+                if((username!=null&&!username.trim().equals(""))&&(password!=null&&!password.trim().equals(""))) {
+                    while ((lineString = fBufferedReader.readLine()) != null) {
+                        System.out.println(lineString);
+                        Scanner cin = new Scanner(lineString);
+                        if(cin.next().equals(username)){
+                            searchflag=1;
+                            break;
+                        }
+                    }
+                    fBufferedReader.close();
+                    if(searchflag==1){
+                        JOptionPane.showMessageDialog(null, "该用户名已存在,无法注册,请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
+                        textField2.setText(""); passwordField3.setText("");
+                        buttonGroup2.clearSelection();
+                    }
+                    else{
+                        FileWriter fWriter=new FileWriter("E:\\大学\\专业课\\3.1Java\\用户数据.txt",true);
+                        String result=username+" "+password+" "+String.valueOf(selectport);
+                        BufferedWriter fBufferedWriter=new BufferedWriter(fWriter);
+                        fBufferedWriter.write(result);
+                        fBufferedWriter.newLine();
+                        fBufferedWriter.flush();
+                        fBufferedWriter.close();
+                        JOptionPane.showMessageDialog(null, "该用户注册成功！", "注册用户", JOptionPane.PLAIN_MESSAGE);
+                        textField2.setText("");
+                        passwordField3.setText("");
+                        buttonGroup2.clearSelection();
+                    }
+
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "无效输入,请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
+                    textField2.setText(""); passwordField3.setText("");
+                    buttonGroup2.clearSelection();
+                }
+
+
+
+
+            }
+            catch (IOException ex){
+                System.out.println(ex.toString());
+            }
+
+
+
+
+        }
+
+
     }
 
     private void initComponents() {
@@ -85,12 +167,12 @@ public class GUI_Register extends JDialog {
 
         //---- radioButton4 ----
         radioButton4.setText(bundle.getString("radioButton4.text_2"));
-        radioButton4.setSelected(true);
         contentPane.add(radioButton4);
         radioButton4.setBounds(245, 150, radioButton4.getPreferredSize().width, 26);
 
         //---- button3 ----
         button3.setText(bundle.getString("button3.text_2"));
+        button3.addActionListener(e -> button3(e));
         contentPane.add(button3);
         button3.setBounds(100, 195, 90, button3.getPreferredSize().height);
 
