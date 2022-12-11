@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.*;
 import java.util.*;
 import javax.swing.*;
 /*
@@ -14,6 +15,43 @@ import javax.swing.*;
  * @author Brainrain
  */
 public class GUI_StuQuestion extends JDialog {
+    Connection con;
+    Statement statement;
+    PreparedStatement preparedstatement;
+    ResultSet resultset;
+
+    ArrayList<QuestionProblem> data=new ArrayList<QuestionProblem>();
+    public void sqlinit(){
+        try {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            System.out.println("数据库驱动已成功启动!");
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+        try {
+            con = DriverManager.getConnection("jdbc:derby:E:\\大学\\专业课\\3.1Java\\在线考试系统;create=true");
+            System.out.println("数据库已成功连接!");
+
+            statement = con.createStatement();
+            String sql1="select * from 简答题";
+            resultset=statement.executeQuery(sql1);
+            System.out.println("查询成功!");
+            data.clear();
+            while(resultset.next()){
+                QuestionProblem temp=new QuestionProblem();
+                temp.setId(resultset.getInt("id"));
+                temp.setDescription(resultset.getString("描述"));
+                temp.setAnswer(resultset.getString("答案"));
+                data.add(temp);
+                System.out.println(temp.getId()+"|"+temp.getDescription()+"|"+temp.getAnswer());
+            }
+            con.close();
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
     public GUI_StuQuestion(Window owner) {
         super(owner);
         GUI_Student.GUI_Studentflag=1;
@@ -23,6 +61,7 @@ public class GUI_StuQuestion extends JDialog {
                 GUI_Student.GUI_Studentflag=0;
             }
         });
+        sqlinit();
     }
 
     private void button1(ActionEvent e) {

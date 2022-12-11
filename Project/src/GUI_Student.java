@@ -17,7 +17,7 @@ public class GUI_Student extends JFrame {
     public static int score[]=new int[3];
     public GUI_Student() {
         initComponents();
-        textField2.setText(GUI_Login.username);
+        textField2.setText(" "+GUI_Login.username);
         new Thread(new Runnable() {
             public void run() {
                 while (true) {

@@ -15,7 +15,7 @@ public class GUI_Teacher extends JFrame {
     public static int GUI_Teacherflag=0;
     public GUI_Teacher() {
         initComponents();
-        textField2.setText(GUI_Login.username);
+        textField2.setText(" "+GUI_Login.username);
         new Thread(new Runnable() {
             public void run() {
                 while (true) {
