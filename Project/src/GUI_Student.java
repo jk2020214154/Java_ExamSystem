@@ -73,7 +73,7 @@ public class GUI_Student extends JFrame {
         // TODO add your code here
         if(GUI_Studentflag==0) {
             this.dispose();
-            JOptionPane.showMessageDialog(null, "教师端注销登录成功！", "注销登录", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "学生端注销登录成功！", "注销登录", JOptionPane.PLAIN_MESSAGE);
             new GUI_Login().setVisible(true);
         }
     }
