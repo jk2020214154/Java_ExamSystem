@@ -95,21 +95,11 @@ public class GUI_Register extends JDialog {
                     textField2.setText(""); passwordField3.setText("");
                     buttonGroup2.clearSelection();
                 }
-
-
-
-
             }
             catch (IOException ex){
                 System.out.println(ex.toString());
             }
-
-
-
-
         }
-
-
     }
 
     private void initComponents() {

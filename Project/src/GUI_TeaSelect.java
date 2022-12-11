@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.*;
@@ -24,10 +25,17 @@ public class GUI_TeaSelect extends JDialog {
         initComponents();
     }
 
+    private void button1(ActionEvent e) {
+        // TODO add your code here
+        this.dispose();
+        GUI_Teacher.GUI_Teacherflag=0;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
         label1 = new JLabel();
+        button1 = new JButton();
 
         //======== this ========
         setTitle(bundle.getString("this.title_2"));
@@ -40,6 +48,12 @@ public class GUI_TeaSelect extends JDialog {
         label1.setForeground(Color.magenta);
         contentPane.add(label1);
         label1.setBounds(135, 15, 275, label1.getPreferredSize().height);
+
+        //---- button1 ----
+        button1.setText(bundle.getString("button1.text_7"));
+        button1.addActionListener(e -> button1(e));
+        contentPane.add(button1);
+        button1.setBounds(425, 365, 100, 36);
 
         {
             // compute preferred size
@@ -62,5 +76,6 @@ public class GUI_TeaSelect extends JDialog {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JLabel label1;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

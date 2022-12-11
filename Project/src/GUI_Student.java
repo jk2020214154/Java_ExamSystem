@@ -40,14 +40,20 @@ public class GUI_Student extends JFrame {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
+        if(GUI_Studentflag==0)
+            new GUI_StuSelect(this).setVisible(true);
     }
 
     private void button2(ActionEvent e) {
         // TODO add your code here
+        if(GUI_Studentflag==0)
+            new GUI_StuJudge(this).setVisible(true);
     }
 
     private void button3(ActionEvent e) {
         // TODO add your code here
+        if(GUI_Studentflag==0)
+            new GUI_StuQuestion(this).setVisible(true);
     }
 
     private void button5(ActionEvent e) {
@@ -76,6 +82,24 @@ public class GUI_Student extends JFrame {
             JOptionPane.showMessageDialog(null, "学生端注销登录成功！", "注销登录", JOptionPane.PLAIN_MESSAGE);
             new GUI_Login().setVisible(true);
         }
+    }
+
+    private void menuItem1(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_Studentflag==0)
+            new GUI_StuSelect(this).setVisible(true);
+    }
+
+    private void menuItem2(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_Studentflag==0)
+            new GUI_StuJudge(this).setVisible(true);
+    }
+
+    private void menuItem3(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_Studentflag==0)
+            new GUI_StuQuestion(this).setVisible(true);
     }
 
     private void initComponents() {
@@ -123,14 +147,17 @@ public class GUI_Student extends JFrame {
 
                 //---- menuItem1 ----
                 menuItem1.setText(bundle.getString("menuItem1.text_2"));
+                menuItem1.addActionListener(e -> menuItem1(e));
                 menu1.add(menuItem1);
 
                 //---- menuItem2 ----
                 menuItem2.setText(bundle.getString("menuItem2.text_2"));
+                menuItem2.addActionListener(e -> menuItem2(e));
                 menu1.add(menuItem2);
 
                 //---- menuItem3 ----
                 menuItem3.setText(bundle.getString("menuItem3.text_2"));
+                menuItem3.addActionListener(e -> menuItem3(e));
                 menu1.add(menuItem3);
             }
             menuBar1.add(menu1);
@@ -205,7 +232,10 @@ public class GUI_Student extends JFrame {
         button1.setText(bundle.getString("button1.text_5"));
         button1.setFont(new Font("sansserif", Font.BOLD, 16));
         button1.setForeground(Color.blue);
-        button1.addActionListener(e -> button1(e));
+        button1.addActionListener(e -> {
+			button1(e);
+			button1(e);
+		});
         contentPane.add(button1);
         button1.setBounds(135, 75, 85, 40);
 
@@ -213,7 +243,10 @@ public class GUI_Student extends JFrame {
         button2.setText(bundle.getString("button2.text_3"));
         button2.setFont(new Font("sansserif", Font.BOLD, 16));
         button2.setForeground(Color.blue);
-        button2.addActionListener(e -> button2(e));
+        button2.addActionListener(e -> {
+			button2(e);
+			button2(e);
+		});
         contentPane.add(button2);
         button2.setBounds(235, 75, 85, 40);
 
@@ -221,7 +254,10 @@ public class GUI_Student extends JFrame {
         button3.setText(bundle.getString("button3.text_4"));
         button3.setFont(new Font("sansserif", Font.BOLD, 16));
         button3.setForeground(Color.blue);
-        button3.addActionListener(e -> button3(e));
+        button3.addActionListener(e -> {
+			button3(e);
+			button3(e);
+		});
         contentPane.add(button3);
         button3.setBounds(340, 75, 85, 40);
 
