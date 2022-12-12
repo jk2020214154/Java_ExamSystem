@@ -40,7 +40,7 @@ new FormModel {
 				"font": new java.awt.Font( "sansserif", 1, 14 )
 				"foreground": sfield java.awt.Color white
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 215
+				"width": 220
 				"height": 30
 				"x": 211
 				"y": 137

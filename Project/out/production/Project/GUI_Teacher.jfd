@@ -42,7 +42,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 205
 				"y": 125
-				"width": 215
+				"width": 220
 				"height": 30
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {

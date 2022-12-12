@@ -210,7 +210,7 @@ public class GUI_Teacher extends JFrame {
         textField1.setFont(new Font("sansserif", Font.BOLD, 14));
         textField1.setForeground(Color.white);
         contentPane.add(textField1);
-        textField1.setBounds(205, 125, 215, 30);
+        textField1.setBounds(205, 125, 220, 30);
 
         //---- button1 ----
         button1.setText(bundle.getString("button1.text_3"));
