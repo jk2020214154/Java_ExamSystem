@@ -19,14 +19,15 @@ import javax.swing.table.TableModel;
  * @author Brainrain
  */
 public class GUI_TeaJudge extends JDialog {
-    int GUI_TeaJudgeflag=0;
+    public static JTable table1;
+    public static int GUI_TeaJudgeflag=0;
     Connection con;
     Statement statement;
     PreparedStatement preparedstatement;
     ResultSet resultset;
 
-    ArrayList<JudgeProblem> data=new ArrayList<JudgeProblem>();
-    public String[][] to_list(ArrayList<JudgeProblem> data){
+    public static ArrayList<JudgeProblem> data=new ArrayList<JudgeProblem>();
+    public static String[][] to_list(ArrayList<JudgeProblem> data){
 
         String tempbody[][]=new String[data.size()][3];
         for(int i=0;i<data.size();i++){
@@ -69,7 +70,7 @@ public class GUI_TeaJudge extends JDialog {
         }
     }
 
-    public void tableinit()
+    public static void tableinit()
     {
         String thead[]={"序号","描述","答案"};
         String tbody[][]=to_list(data);
@@ -125,6 +126,13 @@ public class GUI_TeaJudge extends JDialog {
         }
     }
 
+    private void button3(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaJudgeflag==0){
+            new GUI_TeaJudgeDel(this).setVisible(true);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
@@ -176,6 +184,7 @@ public class GUI_TeaJudge extends JDialog {
 
         //---- button3 ----
         button3.setText(bundle.getString("button3.text_6"));
+        button3.addActionListener(e -> button3(e));
         contentPane.add(button3);
         button3.setBounds(180, 360, 100, 36);
 
@@ -212,7 +221,7 @@ public class GUI_TeaJudge extends JDialog {
     private JLabel label1;
     private JButton button1;
     private JScrollPane scrollPane1;
-    private JTable table1;
+
     private JButton button6;
     private JButton button2;
     private JButton button3;

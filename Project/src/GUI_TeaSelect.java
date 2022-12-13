@@ -20,15 +20,16 @@ import javax.swing.table.TableModel;
  */
 public class GUI_TeaSelect extends JDialog {
 
-    int GUI_TeaSelectflag=0;
+    public static JTable table1;
+    public static int GUI_TeaSelectflag=0;
     Connection con;
     Statement statement;
     PreparedStatement preparedstatement;
     ResultSet resultset;
 
-    ArrayList<SelectProblem> data=new ArrayList<SelectProblem>();
+    public static ArrayList<SelectProblem> data=new ArrayList<SelectProblem>();
 
-    public String[][] to_list(ArrayList<SelectProblem> data){
+    public static String[][] to_list(ArrayList<SelectProblem> data){
         String tempbody[][]=new String[data.size()][7];
         for(int i=0;i<data.size();i++){
             SelectProblem temp=data.get(i);
@@ -78,7 +79,7 @@ public class GUI_TeaSelect extends JDialog {
         }
     }
 
-    public void tableinit(){
+    public static void tableinit(){
         String thead[]={"序号","描述","选项A","选项B","选项C","选项D","答案"};
         String tbody[][]=to_list(data);
         table1.setRowHeight(100);
@@ -134,6 +135,13 @@ public class GUI_TeaSelect extends JDialog {
         }
     }
 
+    private void button3(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaSelectflag==0){
+            new GUI_TeaSelectDel(this).setVisible(true);
+        }
+    }
+
 
     //public boolean isCellEditable(int row, int column) { return false; }
     private void initComponents() {
@@ -181,6 +189,7 @@ public class GUI_TeaSelect extends JDialog {
 
         //---- button3 ----
         button3.setText(bundle.getString("button3.text_5"));
+        button3.addActionListener(e -> button3(e));
         contentPane.add(button3);
         button3.setBounds(180, 360, 100, 36);
 
@@ -223,7 +232,6 @@ public class GUI_TeaSelect extends JDialog {
     private JLabel label1;
     private JButton button1;
     private JScrollPane scrollPane1;
-    private JTable table1;
     private JButton button2;
     private JButton button3;
     private JButton button4;

@@ -13,6 +13,10 @@ public class Main {
     public static void main(String[] args) {
         new GUI_Login().setVisible(true);
     }
+    public static boolean isNumeric(String str) {
+        return str != null && str.matches("-?\\d+(\\.\\d+)?");
+    }
+
 }
 
 

@@ -19,15 +19,16 @@ import javax.swing.table.TableModel;
  * @author Brainrain
  */
 public class GUI_TeaQuestion extends JDialog {
-    int GUI_TeaQuestionflag=0;
+    public static int GUI_TeaQuestionflag=0;
     Connection con;
     Statement statement;
     PreparedStatement preparedstatement;
     ResultSet resultset;
 
-    ArrayList<QuestionProblem> data=new ArrayList<QuestionProblem>();
+    public static JTable table1;
+    public static ArrayList<QuestionProblem> data=new ArrayList<QuestionProblem>();
 
-    public String[][] to_list(ArrayList<QuestionProblem> data){
+    public static String[][] to_list(ArrayList<QuestionProblem> data){
 
         String tempbody[][]=new String[data.size()][3];
         for(int i=0;i<data.size();i++){
@@ -70,7 +71,7 @@ public class GUI_TeaQuestion extends JDialog {
         }
     }
 
-    public void tableinit(){
+    public static void tableinit(){
         String thead[]={"序号","描述","答案"};
         String tbody[][]=to_list(data);
         table1.setRowHeight(120);
@@ -125,6 +126,13 @@ public class GUI_TeaQuestion extends JDialog {
         }
     }
 
+    private void button3(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaQuestionflag==0){
+            new GUI_TeaQuestionDel(this).setVisible(true);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
@@ -176,6 +184,7 @@ public class GUI_TeaQuestion extends JDialog {
 
         //---- button3 ----
         button3.setText(bundle.getString("button3.text_8"));
+        button3.addActionListener(e -> button3(e));
         contentPane.add(button3);
         button3.setBounds(180, 360, 100, 36);
 
@@ -212,7 +221,7 @@ public class GUI_TeaQuestion extends JDialog {
     private JLabel label1;
     private JButton button1;
     private JScrollPane scrollPane1;
-    private JTable table1;
+
     private JButton button6;
     private JButton button2;
     private JButton button3;
