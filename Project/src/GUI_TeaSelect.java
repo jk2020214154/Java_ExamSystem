@@ -20,6 +20,7 @@ import javax.swing.table.TableModel;
  */
 public class GUI_TeaSelect extends JDialog {
 
+    int GUI_TeaSelectflag=0;
     Connection con;
     Statement statement;
     PreparedStatement preparedstatement;
@@ -76,16 +77,8 @@ public class GUI_TeaSelect extends JDialog {
             System.out.println(e);
         }
     }
-    public GUI_TeaSelect(Window owner) {
-        super(owner);
-        GUI_Teacher.GUI_Teacherflag=1;
-        addWindowListener(new WindowAdapter() {//设置关闭监视器
-            public void windowClosing(WindowEvent eve){
-                GUI_Teacher.GUI_Teacherflag=0;
-            }
-        });
-        initComponents();
-        sqlinit();
+
+    public void tableinit(){
         String thead[]={"序号","描述","选项A","选项B","选项C","选项D","答案"};
         String tbody[][]=to_list(data);
         table1.setRowHeight(100);
@@ -112,14 +105,33 @@ public class GUI_TeaSelect extends JDialog {
                     cr2.setBackground(Color.green);column.setCellRenderer(cr2);}
             }
         }
-
-
+    }
+    public GUI_TeaSelect(Window owner) {
+        super(owner);
+        GUI_Teacher.GUI_Teacherflag=1;
+        addWindowListener(new WindowAdapter() {//设置关闭监视器
+            public void windowClosing(WindowEvent eve){
+                GUI_Teacher.GUI_Teacherflag=0;
+            }
+        });
+        initComponents();
+        sqlinit();
+        tableinit();
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
         this.dispose();
         GUI_Teacher.GUI_Teacherflag=0;
+    }
+
+    private void button6(ActionEvent e) {
+        // TODO add your code here
+        if (GUI_TeaSelectflag == 0) {
+            sqlinit();
+            tableinit();
+            JOptionPane.showMessageDialog(null, "选择题数据刷新成功！", "选择题--刷新", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
 
@@ -184,6 +196,7 @@ public class GUI_TeaSelect extends JDialog {
 
         //---- button6 ----
         button6.setText(bundle.getString("button6.text_2"));
+        button6.addActionListener(e -> button6(e));
         contentPane.add(button6);
         button6.setBounds(35, 330, 100, 36);
 

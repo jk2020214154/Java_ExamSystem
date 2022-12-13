@@ -19,6 +19,7 @@ import javax.swing.table.TableModel;
  * @author Brainrain
  */
 public class GUI_TeaQuestion extends JDialog {
+    int GUI_TeaQuestionflag=0;
     Connection con;
     Statement statement;
     PreparedStatement preparedstatement;
@@ -68,16 +69,8 @@ public class GUI_TeaQuestion extends JDialog {
             System.out.println(e);
         }
     }
-    public GUI_TeaQuestion(Window owner) {
-        super(owner);
-        GUI_Teacher.GUI_Teacherflag=1;
-        addWindowListener(new WindowAdapter() {//设置关闭监视器
-            public void windowClosing(WindowEvent eve){
-                GUI_Teacher.GUI_Teacherflag=0;
-            }
-        });
-        initComponents();
-        sqlinit();
+
+    public void tableinit(){
         String thead[]={"序号","描述","答案"};
         String tbody[][]=to_list(data);
         table1.setRowHeight(120);
@@ -101,14 +94,35 @@ public class GUI_TeaQuestion extends JDialog {
                 }
             }
             else{
-                    cr1.setBackground(Color.pink);column.setPreferredWidth(40);column.setCellRenderer(cr1);}
+                cr1.setBackground(Color.pink);column.setPreferredWidth(40);column.setCellRenderer(cr1);}
         }
+    }
+    public GUI_TeaQuestion(Window owner) {
+        super(owner);
+        GUI_Teacher.GUI_Teacherflag=1;
+        addWindowListener(new WindowAdapter() {//设置关闭监视器
+            public void windowClosing(WindowEvent eve){
+                GUI_Teacher.GUI_Teacherflag=0;
+            }
+        });
+        initComponents();
+        sqlinit();
+        tableinit();
     }
 
     private void button1(ActionEvent e) {
         // TODO add your code here
         this.dispose();
         GUI_Teacher.GUI_Teacherflag=0;
+    }
+
+    private void button6(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaQuestionflag==0) {
+            sqlinit();
+            tableinit();
+            JOptionPane.showMessageDialog(null, "简答题数据刷新成功！", "简答题--刷新", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     private void initComponents() {
@@ -151,6 +165,7 @@ public class GUI_TeaQuestion extends JDialog {
 
         //---- button6 ----
         button6.setText(bundle.getString("button6.text_5"));
+        button6.addActionListener(e -> button6(e));
         contentPane.add(button6);
         button6.setBounds(35, 330, 100, 36);
 
