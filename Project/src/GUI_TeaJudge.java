@@ -117,6 +117,11 @@ public class GUI_TeaJudge extends JDialog {
         button1 = new JButton();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
+        button6 = new JButton();
+        button2 = new JButton();
+        button3 = new JButton();
+        button4 = new JButton();
+        button5 = new JButton();
 
         //======== this ========
         setTitle(bundle.getString("this.title_3"));
@@ -143,6 +148,31 @@ public class GUI_TeaJudge extends JDialog {
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(15, 50, 615, 235);
 
+        //---- button6 ----
+        button6.setText(bundle.getString("button6.text_3"));
+        contentPane.add(button6);
+        button6.setBounds(35, 330, 100, 36);
+
+        //---- button2 ----
+        button2.setText(bundle.getString("button2.text_5"));
+        contentPane.add(button2);
+        button2.setBounds(180, 300, 100, 36);
+
+        //---- button3 ----
+        button3.setText(bundle.getString("button3.text_6"));
+        contentPane.add(button3);
+        button3.setBounds(180, 360, 100, 36);
+
+        //---- button4 ----
+        button4.setText(bundle.getString("button4.text_6"));
+        contentPane.add(button4);
+        button4.setBounds(350, 300, 100, 36);
+
+        //---- button5 ----
+        button5.setText(bundle.getString("button5.text_4"));
+        contentPane.add(button5);
+        button5.setBounds(350, 360, 100, 36);
+
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -167,5 +197,10 @@ public class GUI_TeaJudge extends JDialog {
     private JButton button1;
     private JScrollPane scrollPane1;
     private JTable table1;
+    private JButton button6;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
