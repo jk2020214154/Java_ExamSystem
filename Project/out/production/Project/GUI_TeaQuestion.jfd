@@ -17,7 +17,7 @@ new FormModel {
 				"foreground": sfield java.awt.Color magenta
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 275
-				"x": 125
+				"x": 200
 				"y": 15
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -27,12 +27,12 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 100
 				"height": 36
-				"x": 425
+				"x": 530
 				"y": 365
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 440, 360 )
+			"size": new java.awt.Dimension( 520, 360 )
 		} )
 	}
 }

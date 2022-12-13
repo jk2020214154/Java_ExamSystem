@@ -86,13 +86,13 @@ public class GUI_StuJudge extends JDialog {
         label1.setFont(new Font("sansserif", Font.BOLD, 18));
         label1.setForeground(Color.magenta);
         contentPane.add(label1);
-        label1.setBounds(140, 15, 275, label1.getPreferredSize().height);
+        label1.setBounds(200, 15, 275, label1.getPreferredSize().height);
 
         //---- button1 ----
         button1.setText(bundle.getString("button1.text_9"));
         button1.addActionListener(e -> button1(e));
         contentPane.add(button1);
-        button1.setBounds(425, 365, 100, 36);
+        button1.setBounds(530, 365, 100, 36);
 
         {
             // compute preferred size
@@ -108,7 +108,7 @@ public class GUI_StuJudge extends JDialog {
             contentPane.setMinimumSize(preferredSize);
             contentPane.setPreferredSize(preferredSize);
         }
-        setSize(550, 450);
+        setSize(650, 450);
         setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
