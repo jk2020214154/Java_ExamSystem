@@ -62,6 +62,7 @@ public class GUI_StuQuestion extends JDialog {
             }
         });
         sqlinit();
+
     }
 
     private void button1(ActionEvent e) {

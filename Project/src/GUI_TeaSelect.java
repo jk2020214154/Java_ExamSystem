@@ -102,12 +102,12 @@ public class GUI_TeaSelect extends JDialog {
             TableColumn column = table1.getColumnModel().getColumn(i);
             if (i == 1){
                 column.setPreferredWidth(150);
-                column.setMaxWidth(150);
+                column.setMaxWidth(200);
                 column.setMinWidth(150);
             }
             else{
                 if(i==0||i==6){
-                    cr1.setBackground(Color.pink);column.setPreferredWidth(30);column.setMaxWidth(30);column.setMinWidth(30);column.setCellRenderer(cr1);}
+                    cr1.setBackground(Color.pink);column.setPreferredWidth(30);column.setMaxWidth(30);column.setMinWidth(25);column.setCellRenderer(cr1);}
                 else {
                     cr2.setBackground(Color.green);column.setCellRenderer(cr2);}
             }

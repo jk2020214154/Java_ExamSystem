@@ -5,6 +5,10 @@ import java.awt.event.WindowEvent;
 import java.sql.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 /*
  * Created by JFormDesigner on Sat Dec 10 15:12:32 CST 2022
  */
@@ -21,6 +25,17 @@ public class GUI_TeaJudge extends JDialog {
     ResultSet resultset;
 
     ArrayList<JudgeProblem> data=new ArrayList<JudgeProblem>();
+    public String[][] to_list(ArrayList<JudgeProblem> data){
+
+        String tempbody[][]=new String[data.size()][3];
+        for(int i=0;i<data.size();i++){
+            JudgeProblem temp=data.get(i);
+            tempbody[i][0]=Integer.toString(temp.getId());
+            tempbody[i][1] = temp.getDescription();
+            tempbody[i][2] = temp.getAnswer();
+        }
+        return tempbody;
+    }
     public void sqlinit(){
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -62,6 +77,31 @@ public class GUI_TeaJudge extends JDialog {
         });
         initComponents();
         sqlinit();
+        String thead[]={"序号","描述","答案"};
+        String tbody[][]=to_list(data);
+        table1.setRowHeight(50);
+        TableModel model = new DefaultTableModel(tbody,thead);
+        table1.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+        DefaultTableCellRenderer cr1 = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer cr2 = new DefaultTableCellRenderer();
+        cr1.setHorizontalAlignment(JLabel.CENTER);
+        cr2.setHorizontalAlignment(JLabel.CENTER);
+        table1.setModel(model);
+
+        table1.setDefaultRenderer(Object.class,new TableCellTextAreaRenderer());
+        for(int i=0;i<=2;i++) {
+            TableColumn column = table1.getColumnModel().getColumn(i);
+            if (i == 1){
+                column.setPreferredWidth(520);
+                column.setMaxWidth(530);
+            }
+            else{
+                if(i==0){
+                    cr1.setBackground(Color.pink);column.setPreferredWidth(40);column.setCellRenderer(cr1);}
+                else if(i==2){
+                    cr2.setBackground(Color.green);column.setPreferredWidth(40);column.setMaxWidth(100);column.setCellRenderer(cr2);}
+            }
+        }
     }
 
     private void button1(ActionEvent e) {
@@ -75,6 +115,8 @@ public class GUI_TeaJudge extends JDialog {
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
         label1 = new JLabel();
         button1 = new JButton();
+        scrollPane1 = new JScrollPane();
+        table1 = new JTable();
 
         //======== this ========
         setTitle(bundle.getString("this.title_3"));
@@ -93,6 +135,13 @@ public class GUI_TeaJudge extends JDialog {
         button1.addActionListener(e -> button1(e));
         contentPane.add(button1);
         button1.setBounds(530, 365, 100, 36);
+
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setViewportView(table1);
+        }
+        contentPane.add(scrollPane1);
+        scrollPane1.setBounds(15, 50, 615, 235);
 
         {
             // compute preferred size
@@ -116,5 +165,7 @@ public class GUI_TeaJudge extends JDialog {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JLabel label1;
     private JButton button1;
+    private JScrollPane scrollPane1;
+    private JTable table1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
