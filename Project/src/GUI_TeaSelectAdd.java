@@ -266,7 +266,6 @@ public class GUI_TeaSelectAdd extends JDialog {
         button2.setText(bundle.getString("button2.text_11"));
         button2.addActionListener(e -> {
 			button2(e);
-			button2(e);
 		});
         contentPane.add(button2);
         button2.setBounds(265, 315, 100, 36);
@@ -297,6 +296,7 @@ public class GUI_TeaSelectAdd extends JDialog {
         setLocationRelativeTo(null);
 
         //---- buttonGroup1 ----
+        ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(radioButton1);
         buttonGroup1.add(radioButton2);
         buttonGroup1.add(radioButton3);

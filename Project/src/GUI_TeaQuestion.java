@@ -135,6 +135,14 @@ public class GUI_TeaQuestion extends JDialog {
         }
     }
 
+    private void button2(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaQuestionflag==0)
+        {
+            new GUI_TeaQuestionAdd(this).setVisible(true);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
@@ -181,6 +189,7 @@ public class GUI_TeaQuestion extends JDialog {
 
         //---- button2 ----
         button2.setText(bundle.getString("button2.text_7"));
+        button2.addActionListener(e -> button2(e));
         contentPane.add(button2);
         button2.setBounds(180, 300, 100, 36);
 
@@ -223,7 +232,7 @@ public class GUI_TeaQuestion extends JDialog {
     private JLabel label1;
     private JButton button1;
     private JScrollPane scrollPane1;
-
+    //private JTable table1;
     private JButton button6;
     private JButton button2;
     private JButton button3;
