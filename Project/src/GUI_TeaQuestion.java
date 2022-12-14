@@ -113,8 +113,10 @@ public class GUI_TeaQuestion extends JDialog {
 
     private void button1(ActionEvent e) {
         // TODO add your code here
-        this.dispose();
-        GUI_Teacher.GUI_Teacherflag=0;
+        if(GUI_TeaQuestionflag==0) {
+            this.dispose();
+            GUI_Teacher.GUI_Teacherflag = 0;
+        }
     }
 
     private void button6(ActionEvent e) {
