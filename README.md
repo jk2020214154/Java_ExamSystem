@@ -13,10 +13,15 @@
 > #### GUI_TeaSelect(*)
 > ##### ----------GUI_TeaSelectDel(*)
 > ##### ----------GUI_TeaSelectAdd(*)
+> ##### ----------GUI_TeaSelectSearch(*)
 > #### GUI_TeaJudge(*)
 > ##### ----------GUI_TeaJudgeDel(*)
+> ##### ----------GUI_TeaJudgeAdd(*)
+> ##### ----------GUI_TeaJudgeSearch(*)
 > #### GUI_TeaQuestion(*)
 > ##### ----------GUI_TeaQuestionDel(*)
+> ##### ----------GUI_TeaQuestionAdd(*)
+> ##### ----------GUI_TeaQuestionSearch(*)
 > #### GUI_TeaHelp(*)
 
 ### 学生端登录GUI_Student
@@ -34,7 +39,7 @@
 
 2.题型包含选择题、判断题、简答题三种类型;
 
-3.教师端现已实现删除和刷新的操作,界面大体设计好;
+3.教师端现已实现删除和刷新和增加和查询的操作,界面大体设计好;
 
 4.学生端的界面设计一半,预计在两天后处理学生端;
 

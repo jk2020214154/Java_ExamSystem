@@ -143,6 +143,14 @@ public class GUI_TeaJudge extends JDialog {
         }
     }
 
+    private void button5(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaJudgeflag==0)
+        {
+            new GUI_TeaJudgeSearch(this).setVisible(true);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
@@ -206,6 +214,7 @@ public class GUI_TeaJudge extends JDialog {
 
         //---- button5 ----
         button5.setText(bundle.getString("button5.text_4"));
+        button5.addActionListener(e -> button5(e));
         contentPane.add(button5);
         button5.setBounds(350, 360, 100, 36);
 
