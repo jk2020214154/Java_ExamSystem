@@ -12,6 +12,7 @@
 
 > #### GUI_TeaSelect(*)
 > ##### ----------GUI_TeaSelectDel(*)
+> ##### ----------GUI_TeaSelectAdd(*)
 > #### GUI_TeaJudge(*)
 > ##### ----------GUI_TeaJudgeDel(*)
 > #### GUI_TeaQuestion(*)
