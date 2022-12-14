@@ -183,10 +183,10 @@ public class GUI_TeaQuestionAdd extends JDialog {
         {
 
             //---- textArea3 ----
-            textArea3.setEnabled(false);
             textArea3.setText(bundle.getString("textArea3.text"));
             textArea3.setLineWrap(true);
             textArea3.setFont(new Font("sansserif", Font.BOLD, 12));
+            textArea3.setEditable(false);
             scrollPane3.setViewportView(textArea3);
         }
         contentPane.add(scrollPane3);

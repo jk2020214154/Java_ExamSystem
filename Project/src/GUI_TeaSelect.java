@@ -152,6 +152,14 @@ public class GUI_TeaSelect extends JDialog {
         }
     }
 
+    private void button5(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaSelectflag==0)
+        {
+            new GUI_TeaSelectSearch(this).setVisible(true);
+        }
+    }
+
 
     //public boolean isCellEditable(int row, int column) { return false; }
     private void initComponents() {
@@ -211,6 +219,7 @@ public class GUI_TeaSelect extends JDialog {
 
         //---- button5 ----
         button5.setText(bundle.getString("button5.text_3"));
+        button5.addActionListener(e -> button5(e));
         contentPane.add(button5);
         button5.setBounds(350, 360, 100, 36);
 

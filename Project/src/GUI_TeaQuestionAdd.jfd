@@ -102,10 +102,10 @@ new FormModel {
 				name: "scrollPane3"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textArea3"
-					"enabled": false
 					"text": new FormMessage( null, "textArea3.text" )
 					"lineWrap": true
 					"font": new java.awt.Font( "sansserif", 1, 12 )
+					"editable": false
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 310
