@@ -9,6 +9,7 @@ new FormModel {
 			name: "this"
 			"$locationPolicy": 1
 			"$sizePolicy": 1
+			"title": new FormMessage( null, "this.title_18" )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
 				"text": new FormMessage( null, "label2.text_10" )

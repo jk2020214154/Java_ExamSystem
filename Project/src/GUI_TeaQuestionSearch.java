@@ -220,6 +220,7 @@ public class GUI_TeaQuestionSearch extends JDialog {
         button4 = new JButton();
 
         //======== this ========
+        setTitle(bundle.getString("this.title_18"));
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
