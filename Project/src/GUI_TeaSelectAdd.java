@@ -13,7 +13,6 @@ import javax.swing.*;
  * @author Brainrain
  */
 public class GUI_TeaSelectAdd extends JDialog {
-    public ButtonGroup buttonGroup1 = new ButtonGroup();
     Connection con;
     Statement statement;
     PreparedStatement preparedstatement;
@@ -29,13 +28,9 @@ public class GUI_TeaSelectAdd extends JDialog {
         });
     }
 
-    private void button2(ActionEvent e) {
-        // TODO add your code here
-        this.dispose();
-        GUI_TeaSelect.GUI_TeaSelectflag=0;
-    }
 
-    private void button1(ActionEvent e) {
+
+    private void button3(ActionEvent e) {
         // TODO add your code here
         if(radioButton1.isSelected()||radioButton2.isSelected()||radioButton3.isSelected()||radioButton4.isSelected())
         {
@@ -53,7 +48,7 @@ public class GUI_TeaSelectAdd extends JDialog {
                     JOptionPane.showMessageDialog(null, "该条记录序号已存在,请重新输入!", "警告", JOptionPane.ERROR_MESSAGE);
                     textField1.setText("");
                     textArea1.setText("");textArea2.setText("");
-                    textArea3.setText("");textArea4.setText("");
+                    textArea3.setText("");textArea4.setText("");textArea5.setText("");
                     buttonGroup1.clearSelection();
                 }
                 else if(Main.isNumeric(temp)){
@@ -123,6 +118,12 @@ public class GUI_TeaSelectAdd extends JDialog {
         }
     }
 
+    private void button4(ActionEvent e) {
+        // TODO add your code here
+        this.dispose();
+        GUI_TeaSelect.GUI_TeaSelectflag=0;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
@@ -143,8 +144,9 @@ public class GUI_TeaSelectAdd extends JDialog {
         radioButton2 = new JRadioButton();
         radioButton3 = new JRadioButton();
         radioButton4 = new JRadioButton();
-        button2 = new JButton();
-        button1 = new JButton();
+        button3 = new JButton();
+        button4 = new JButton();
+        buttonGroup1 = new ButtonGroup();
 
         //======== this ========
         setTitle(bundle.getString("this.title_13"));
@@ -262,21 +264,17 @@ public class GUI_TeaSelectAdd extends JDialog {
         contentPane.add(radioButton4);
         radioButton4.setBounds(new Rectangle(new Point(255, 248), radioButton4.getPreferredSize()));
 
-        //---- button2 ----
-        button2.setText(bundle.getString("button2.text_11"));
-        button2.addActionListener(e -> {
-			button2(e);
-		});
-        contentPane.add(button2);
-        button2.setBounds(265, 315, 100, 36);
+        //---- button3 ----
+        button3.setText(bundle.getString("button3.text_4"));
+        button3.addActionListener(e -> button3(e));
+        contentPane.add(button3);
+        button3.setBounds(145, 315, 100, 36);
 
-        //---- button1 ----
-        button1.setText(bundle.getString("button1.text_15"));
-        button1.addActionListener(e -> {
-			button1(e);
-		});
-        contentPane.add(button1);
-        button1.setBounds(145, 315, 100, 36);
+        //---- button4 ----
+        button4.setText(bundle.getString("button4.text_13"));
+        button4.addActionListener(e -> button4(e));
+        contentPane.add(button4);
+        button4.setBounds(265, 315, 100, 36);
 
         {
             // compute preferred size
@@ -296,7 +294,6 @@ public class GUI_TeaSelectAdd extends JDialog {
         setLocationRelativeTo(null);
 
         //---- buttonGroup1 ----
-        ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(radioButton1);
         buttonGroup1.add(radioButton2);
         buttonGroup1.add(radioButton3);
@@ -322,7 +319,8 @@ public class GUI_TeaSelectAdd extends JDialog {
     private JRadioButton radioButton2;
     private JRadioButton radioButton3;
     private JRadioButton radioButton4;
-    private JButton button2;
-    private JButton button1;
+    private JButton button3;
+    private JButton button4;
+    public ButtonGroup buttonGroup1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

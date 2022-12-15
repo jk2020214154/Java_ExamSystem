@@ -20,9 +20,14 @@ public class GUI_StuSelect extends JDialog {
     PreparedStatement preparedstatement;
     ResultSet resultset;
 
-    public int tempnum=-1;
 
+    public int tempnum=-1;
+    public int tempscore=0;
+    public int tot=0;
+
+    String answer;
     ArrayList<SelectProblem> data=new ArrayList<SelectProblem>();
+    int vis[];
     public void sqlinit(){
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -62,15 +67,33 @@ public class GUI_StuSelect extends JDialog {
         super(owner);
         initComponents();
         sqlinit();
+        vis=new int[data.size()];
     }
 
 
     private void button3(ActionEvent e) {
         // TODO add your code here
-        if(tempnum!=-1) {
+        if(tempnum>=0) {
+
+            String tempanswer="";
+            if(radioButton1.isSelected()||radioButton2.isSelected()||radioButton3.isSelected()||radioButton4.isSelected())
+            {
+                if(radioButton1.isSelected())
+                    tempanswer="A";
+                else if(radioButton2.isSelected())
+                    tempanswer="B";
+                else if(radioButton3.isSelected())
+                   tempanswer="C";
+                else if(radioButton4.isSelected())
+                    tempanswer="D";
+                if(answer.equals(tempanswer))
+                    tempscore+=5;
+            }
             this.dispose();
             GUI_Student.visited[0] = 1;
             GUI_Student.problemnum[0] = tempnum;
+            GUI_Student.score[0]=tempscore;
+            JOptionPane.showMessageDialog(null, "选择题已作答完毕，获得分数为"+tempscore+"分！", "选择题确认题目数", JOptionPane.PLAIN_MESSAGE);
         }
         else{
             JOptionPane.showMessageDialog(null, "未确定题目数时不能进行提交操作！", "警告", JOptionPane.ERROR_MESSAGE);
@@ -80,17 +103,101 @@ public class GUI_StuSelect extends JDialog {
     private void button2(ActionEvent e) {
         // TODO add your code here
         String temp=textField1.getText();
-        if(tempnum==-1) {
+        if(tempnum<=-1) {
             if (Main.isNumeric(temp)) {
-                JOptionPane.showMessageDialog(null, "选择题目数已确定！", "选择题确认题目数", JOptionPane.PLAIN_MESSAGE);
-                tempnum=Integer.parseInt(temp);
+                if(Integer.parseInt(temp)<=data.size()) {
+                    JOptionPane.showMessageDialog(null, "选择题目数已确定！", "选择题确认题目数", JOptionPane.PLAIN_MESSAGE);
+                    tempnum = Integer.parseInt(temp);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "题目数应小于选择题题目数"+data.size()+"!", "警告", JOptionPane.ERROR_MESSAGE);
+                    textField1.setText("");
+                }
             }
             else{
                 JOptionPane.showMessageDialog(null, "题目数应为数字！", "警告", JOptionPane.ERROR_MESSAGE);
+                textField1.setText("");
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "当前题目数已确定,若想重新确定答题数需关闭该窗口！", "警告", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "当前题目数已确定,若想重新确定答题数需关闭选择题答题界面(不可提交)！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void button4(ActionEvent e) {
+        // TODO add your code here
+        if(tempnum<=-1){
+            JOptionPane.showMessageDialog(null, "题目数未确定,请先确定题目数！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(tempnum==0) {
+            JOptionPane.showMessageDialog(null, "题目数为0，不会显示题目！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            tot++;
+            Random rand=new Random();
+            int num=rand.nextInt(data.size());
+            vis[num]=1;
+            label4.setText("第"+tot+"题/共"+tempnum+"题");
+            textArea1.setText(data.get(num).getDescription());
+            textArea2.setText(data.get(num).getSelect_A());
+            textArea3.setText(data.get(num).getSelect_B());
+            textArea4.setText(data.get(num).getSelect_C());
+            textArea5.setText(data.get(num).getSelect_D());
+            answer=data.get(num).getAnswer();
+            textField2.setText("选择题分数："+tempscore+"分");
+            JOptionPane.showMessageDialog(null, "选择题已生成，请开始答题！", "选择题开始答题", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    private void button1(ActionEvent e) {
+        // TODO add your code here
+        if(tot==tempnum)
+        {
+            JOptionPane.showMessageDialog(null, "当前为最后一题，无法跳转下一题!", "警告", JOptionPane.ERROR_MESSAGE);
+
+        }
+        else {
+            if (radioButton1.isSelected() || radioButton2.isSelected() || radioButton3.isSelected() || radioButton4.isSelected()) {
+                String tempanswer="";
+                if(radioButton1.isSelected())
+                    tempanswer="A";
+                else if(radioButton2.isSelected())
+                    tempanswer="B";
+                else if(radioButton3.isSelected())
+                    tempanswer="C";
+                else if(radioButton4.isSelected())
+                    tempanswer="D";
+                if(answer.equals(tempanswer))
+                {
+                    textField3.setText("上一题回答正确！");
+                    tempscore+=5;
+                    textField2.setText("选择题分数："+tempscore+"分");
+                }
+                else{
+                    textField3.setText("上一题回答错误！");
+                }
+                tot++;
+                Random rand=new Random();
+                int num;
+                while(true)
+                {
+                    num=rand.nextInt(data.size());
+                    if(vis[num]==0)
+                        break;
+                }
+                vis[num]=1;
+                buttonGroup1.clearSelection();
+                label4.setText("第"+tot+"题/共"+tempnum+"题");
+                textArea1.setText(data.get(num).getDescription());
+                textArea2.setText(data.get(num).getSelect_A());
+                textArea3.setText(data.get(num).getSelect_B());
+                textArea4.setText(data.get(num).getSelect_C());
+                textArea5.setText(data.get(num).getSelect_D());
+                answer=data.get(num).getAnswer();
+                JOptionPane.showMessageDialog(null, "下一题已生成，请开始答题！", "选择题下一题", JOptionPane.PLAIN_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "当前选择题未进行选择，无法跳入下一题!", "警告", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
@@ -105,18 +212,20 @@ public class GUI_StuSelect extends JDialog {
         button4 = new JButton();
         label3 = new JLabel();
         textField2 = new JTextField();
+        textField3 = new JTextField();
         panel1 = new JPanel();
         label4 = new JLabel();
-        textArea1 = new JTextArea();
         button1 = new JButton();
+        textArea1 = new JTextArea();
         radioButton1 = new JRadioButton();
+        textArea2 = new JTextArea();
         radioButton2 = new JRadioButton();
+        textArea3 = new JTextArea();
         radioButton3 = new JRadioButton();
         radioButton4 = new JRadioButton();
-        textArea2 = new JTextArea();
-        textArea3 = new JTextArea();
         textArea4 = new JTextArea();
         textArea5 = new JTextArea();
+        buttonGroup1 = new ButtonGroup();
 
         //======== this ========
         setTitle(bundle.getString("this.title_7"));
@@ -157,6 +266,7 @@ public class GUI_StuSelect extends JDialog {
 
         //---- button4 ----
         button4.setText(bundle.getString("button4.text_12"));
+        button4.addActionListener(e -> button4(e));
         contentPane.add(button4);
         button4.setBounds(345, 50, 100, 36);
 
@@ -169,72 +279,94 @@ public class GUI_StuSelect extends JDialog {
 
         //---- textField2 ----
         textField2.setEditable(false);
+        textField2.setForeground(Color.green);
+        textField2.setFont(new Font("sansserif", Font.BOLD, 14));
         contentPane.add(textField2);
         textField2.setBounds(110, 360, 195, 36);
 
+        //---- textField3 ----
+        textField3.setFont(new Font("sansserif", Font.BOLD, 14));
+        textField3.setForeground(Color.black);
+        contentPane.add(textField3);
+        textField3.setBounds(315, 360, 195, 35);
+
         //======== panel1 ========
         {
-            panel1.setForeground(Color.darkGray);
-            panel1.setBackground(new Color(0xccffff));
+            panel1.setBackground(new Color(0x99ffff));
             panel1.setLayout(null);
 
             //---- label4 ----
             label4.setFont(new Font("sansserif", Font.BOLD, 14));
-            label4.setForeground(Color.magenta);
+            label4.setForeground(Color.black);
             label4.setBackground(new Color(0x9999ff));
             panel1.add(label4);
             label4.setBounds(15, 10, 120, 30);
 
+            //---- button1 ----
+            button1.setText(bundle.getString("button1.text_6"));
+            button1.addActionListener(e -> button1(e));
+            panel1.add(button1);
+            button1.setBounds(525, 15, 100, 36);
+
             //---- textArea1 ----
             textArea1.setEditable(false);
             textArea1.setLineWrap(true);
+            textArea1.setFont(new Font("sansserif", Font.BOLD, 14));
+            textArea1.setForeground(Color.magenta);
             panel1.add(textArea1);
-            textArea1.setBounds(5, 45, 590, 80);
-
-            //---- button1 ----
-            button1.setText(bundle.getString("button1.text_6"));
-            panel1.add(button1);
-            button1.setBounds(495, 5, 100, 36);
+            textArea1.setBounds(15, 55, 610, 80);
 
             //---- radioButton1 ----
             radioButton1.setText(bundle.getString("radioButton1.text_6"));
             panel1.add(radioButton1);
-            radioButton1.setBounds(new Rectangle(new Point(5, 140), radioButton1.getPreferredSize()));
+            radioButton1.setBounds(new Rectangle(new Point(20, 150), radioButton1.getPreferredSize()));
+
+            //---- textArea2 ----
+            textArea2.setEditable(false);
+            textArea2.setFont(new Font("sansserif", Font.BOLD, 14));
+            textArea2.setForeground(Color.red);
+            textArea2.setLineWrap(true);
+            panel1.add(textArea2);
+            textArea2.setBounds(55, 150, textArea2.getPreferredSize().width, 90);
 
             //---- radioButton2 ----
             radioButton2.setText(bundle.getString("radioButton2.text_6"));
             panel1.add(radioButton2);
-            radioButton2.setBounds(new Rectangle(new Point(153, 140), radioButton2.getPreferredSize()));
+            radioButton2.setBounds(new Rectangle(new Point(170, 150), radioButton2.getPreferredSize()));
+
+            //---- textArea3 ----
+            textArea3.setEditable(false);
+            textArea3.setFont(new Font("sansserif", Font.BOLD, 14));
+            textArea3.setForeground(Color.red);
+            textArea3.setLineWrap(true);
+            panel1.add(textArea3);
+            textArea3.setBounds(205, 150, textArea3.getPreferredSize().width, 90);
 
             //---- radioButton3 ----
             radioButton3.setText(bundle.getString("radioButton3.text_4"));
             panel1.add(radioButton3);
-            radioButton3.setBounds(new Rectangle(new Point(304, 140), radioButton3.getPreferredSize()));
+            radioButton3.setBounds(new Rectangle(new Point(325, 150), radioButton3.getPreferredSize()));
 
             //---- radioButton4 ----
             radioButton4.setText(bundle.getString("radioButton4.text_4"));
             panel1.add(radioButton4);
-            radioButton4.setBounds(new Rectangle(new Point(449, 140), radioButton4.getPreferredSize()));
-
-            //---- textArea2 ----
-            textArea2.setEditable(false);
-            panel1.add(textArea2);
-            textArea2.setBounds(39, 140, 110, 90);
-
-            //---- textArea3 ----
-            textArea3.setEditable(false);
-            panel1.add(textArea3);
-            textArea3.setBounds(188, 140, 110, 90);
+            radioButton4.setBounds(new Rectangle(new Point(475, 150), radioButton4.getPreferredSize()));
 
             //---- textArea4 ----
             textArea4.setEditable(false);
+            textArea4.setFont(new Font("sansserif", Font.BOLD, 14));
+            textArea4.setForeground(Color.red);
+            textArea4.setLineWrap(true);
             panel1.add(textArea4);
-            textArea4.setBounds(336, 140, 110, 90);
+            textArea4.setBounds(360, 150, textArea4.getPreferredSize().width, 90);
 
             //---- textArea5 ----
             textArea5.setEditable(false);
+            textArea5.setFont(new Font("sansserif", Font.BOLD, 14));
+            textArea5.setForeground(Color.red);
+            textArea5.setLineWrap(true);
             panel1.add(textArea5);
-            textArea5.setBounds(481, 140, 110, 90);
+            textArea5.setBounds(510, 150, textArea5.getPreferredSize().width, 90);
 
             {
                 // compute preferred size
@@ -252,7 +384,7 @@ public class GUI_StuSelect extends JDialog {
             }
         }
         contentPane.add(panel1);
-        panel1.setBounds(20, 95, 600, 260);
+        panel1.setBounds(0, 90, 650, 260);
 
         {
             // compute preferred size
@@ -272,7 +404,6 @@ public class GUI_StuSelect extends JDialog {
         setLocationRelativeTo(null);
 
         //---- buttonGroup1 ----
-        ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(radioButton1);
         buttonGroup1.add(radioButton2);
         buttonGroup1.add(radioButton3);
@@ -289,17 +420,19 @@ public class GUI_StuSelect extends JDialog {
     private JButton button4;
     private JLabel label3;
     private JTextField textField2;
+    private JTextField textField3;
     private JPanel panel1;
     private JLabel label4;
-    private JTextArea textArea1;
     private JButton button1;
+    private JTextArea textArea1;
     private JRadioButton radioButton1;
+    private JTextArea textArea2;
     private JRadioButton radioButton2;
+    private JTextArea textArea3;
     private JRadioButton radioButton3;
     private JRadioButton radioButton4;
-    private JTextArea textArea2;
-    private JTextArea textArea3;
     private JTextArea textArea4;
     private JTextArea textArea5;
+    public ButtonGroup buttonGroup1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

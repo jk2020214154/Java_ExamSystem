@@ -14,7 +14,6 @@ import javax.swing.*;
  */
 public class GUI_TeaSelectSearch extends JDialog {
 
-    public ButtonGroup buttonGroup1 = new ButtonGroup();
     Connection con;
     Statement statement;
     PreparedStatement preparedstatement;
@@ -246,6 +245,7 @@ public class GUI_TeaSelectSearch extends JDialog {
         radioButton3 = new JRadioButton();
         radioButton4 = new JRadioButton();
         button4 = new JButton();
+        buttonGroup1 = new ButtonGroup();
 
         //======== this ========
         setTitle(bundle.getString("this.title_16"));
@@ -361,7 +361,6 @@ public class GUI_TeaSelectSearch extends JDialog {
         setLocationRelativeTo(null);
 
         //---- buttonGroup1 ----
-        ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(radioButton1);
         buttonGroup1.add(radioButton2);
         buttonGroup1.add(radioButton3);
@@ -384,5 +383,6 @@ public class GUI_TeaSelectSearch extends JDialog {
     private JRadioButton radioButton3;
     private JRadioButton radioButton4;
     private JButton button4;
+    public ButtonGroup buttonGroup1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

@@ -64,6 +64,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button4"
 				"text": new FormMessage( null, "button4.text_12" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 345
 				"y": 50
@@ -83,20 +84,31 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField2"
 				"editable": false
+				"foreground": sfield java.awt.Color green
+				"font": new java.awt.Font( "sansserif", 1, 14 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 110
 				"y": 360
 				"width": 195
 				"height": 36
 			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField3"
+				"font": new java.awt.Font( "sansserif", 1, 14 )
+				"foreground": sfield java.awt.Color black
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 315
+				"y": 360
+				"width": 195
+				"height": 35
+			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "panel1"
-				"foreground": sfield java.awt.Color darkGray
-				"background": new java.awt.Color( 204, 255, 255, 255 )
+				"background": new java.awt.Color( 153, 255, 255, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label4"
 					"font": new java.awt.Font( "sansserif", 1, 14 )
-					"foreground": sfield java.awt.Color magenta
+					"foreground": sfield java.awt.Color black
 					"background": new java.awt.Color( 153, 153, 255, 255 )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 15
@@ -104,98 +116,109 @@ new FormModel {
 					"width": 120
 					"height": 30
 				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": new FormMessage( null, "button1.text_6" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 525
+					"y": 15
+					"width": 100
+					"height": 36
+				} )
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textArea1"
 					"editable": false
 					"lineWrap": true
+					"font": &Font0 new java.awt.Font( "sansserif", 1, 14 )
+					"foreground": sfield java.awt.Color magenta
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 5
-					"y": 45
-					"width": 590
 					"height": 80
-				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
-					"text": new FormMessage( null, "button1.text_6" )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 495
-					"y": 5
-					"width": 100
-					"height": 36
+					"x": 15
+					"y": 55
+					"width": 610
 				} )
 				add( new FormComponent( "javax.swing.JRadioButton" ) {
 					name: "radioButton1"
 					"text": new FormMessage( null, "radioButton1.text_6" )
 					"$buttonGroup": new FormReference( "buttonGroup1" )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 5
-					"y": 140
+					"x": 20
+					"y": 150
+				} )
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea2"
+					"editable": false
+					"font": #Font0
+					"foreground": sfield java.awt.Color red
+					"lineWrap": true
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"height": 90
+					"x": 55
+					"y": 150
 				} )
 				add( new FormComponent( "javax.swing.JRadioButton" ) {
 					name: "radioButton2"
 					"text": new FormMessage( null, "radioButton2.text_6" )
 					"$buttonGroup": new FormReference( "buttonGroup1" )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 153
-					"y": 140
+					"x": 170
+					"y": 150
+				} )
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea3"
+					"editable": false
+					"font": #Font0
+					"foreground": sfield java.awt.Color red
+					"lineWrap": true
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"height": 90
+					"x": 205
+					"y": 150
 				} )
 				add( new FormComponent( "javax.swing.JRadioButton" ) {
 					name: "radioButton3"
 					"text": new FormMessage( null, "radioButton3.text_4" )
 					"$buttonGroup": new FormReference( "buttonGroup1" )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 304
-					"y": 140
+					"x": 325
+					"y": 150
 				} )
 				add( new FormComponent( "javax.swing.JRadioButton" ) {
 					name: "radioButton4"
 					"text": new FormMessage( null, "radioButton4.text_4" )
 					"$buttonGroup": new FormReference( "buttonGroup1" )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 449
-					"y": 140
-				} )
-				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textArea2"
-					"editable": false
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 39
-					"y": 140
-					"width": 110
-					"height": 90
-				} )
-				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textArea3"
-					"editable": false
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 188
-					"y": 140
-					"width": 110
-					"height": 90
+					"x": 475
+					"y": 150
 				} )
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textArea4"
 					"editable": false
+					"font": #Font0
+					"foreground": sfield java.awt.Color red
+					"lineWrap": true
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 336
-					"y": 140
-					"width": 110
 					"height": 90
+					"x": 360
+					"y": 150
 				} )
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textArea5"
 					"editable": false
+					"font": #Font0
+					"foreground": sfield java.awt.Color red
+					"lineWrap": true
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 481
-					"y": 140
-					"width": 110
 					"height": 90
+					"x": 510
+					"y": 150
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 20
-				"y": 95
 				"height": 260
-				"width": 600
+				"x": 0
+				"y": 90
+				"width": 650
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
@@ -203,6 +226,10 @@ new FormModel {
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
 			name: "buttonGroup1"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+				"JavaCodeGenerator.variableLocal": false
+			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 376 )
 		} )

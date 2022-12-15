@@ -17,7 +17,6 @@ public class GUI_TeaJudgeAdd extends JDialog {
     Statement statement;
     PreparedStatement preparedstatement;
     ResultSet resultset;
-    public ButtonGroup buttonGroup1 = new ButtonGroup();
     public GUI_TeaJudgeAdd(Window owner) {
         super(owner);
         GUI_TeaJudge.GUI_TeaJudgeflag=1;
@@ -121,6 +120,7 @@ public class GUI_TeaJudgeAdd extends JDialog {
         radioButton2 = new JRadioButton();
         button1 = new JButton();
         button2 = new JButton();
+        buttonGroup1 = new ButtonGroup();
 
         //======== this ========
         setTitle(bundle.getString("this.title_14"));
@@ -204,7 +204,6 @@ public class GUI_TeaJudgeAdd extends JDialog {
         setLocationRelativeTo(null);
 
         //---- buttonGroup1 ----
-        ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(radioButton1);
         buttonGroup1.add(radioButton2);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
@@ -220,5 +219,6 @@ public class GUI_TeaJudgeAdd extends JDialog {
     private JRadioButton radioButton2;
     private JButton button1;
     private JButton button2;
+    public ButtonGroup buttonGroup1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
