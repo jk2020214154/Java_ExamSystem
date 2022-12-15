@@ -151,13 +151,21 @@ public class GUI_TeaQuestion extends JDialog {
         }
     }
 
+    private void button4(ActionEvent e) {
+        // TODO add your code here
+        if(GUI_TeaQuestionflag == 0)
+        {
+            new GUI_TeaQuestionUpdate(this).setVisible(true);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
         label1 = new JLabel();
         button1 = new JButton();
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
+        table1 = new JTable(){public boolean isCellEditable(int row, int column) { return false; }};
         button6 = new JButton();
         button2 = new JButton();
         button3 = new JButton();
@@ -209,6 +217,7 @@ public class GUI_TeaQuestion extends JDialog {
 
         //---- button4 ----
         button4.setText(bundle.getString("button4.text_8"));
+        button4.addActionListener(e -> button4(e));
         contentPane.add(button4);
         button4.setBounds(350, 300, 100, 36);
 

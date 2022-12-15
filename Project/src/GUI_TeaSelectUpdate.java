@@ -103,28 +103,26 @@ public class GUI_TeaSelectUpdate extends JDialog {
 
     private void button2(ActionEvent e) {
         // TODO add your code here
-        int flag[]=new int[8],flagg=0;
-        String temp=textField4.getText();
-        if ((temp != null && !temp.trim().equals(""))){
-            if(Main.isNumeric(temp)){
+        int flag[] = new int[8], flagg = 0;
+        String temp = textField4.getText();
+        if ((temp != null && !temp.trim().equals(""))) {
+            if (Main.isNumeric(temp)) {
                 try {
                     Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
                     System.out.println("数据库驱动已成功启动!");
-                }
-                catch (Exception ex){
+                } catch (Exception ex) {
                     System.out.println(ex.toString());
                 }
                 try {
                     con = DriverManager.getConnection("jdbc:derby:E:\\大学\\专业课\\3.1Java\\在线考试系统;create=true");
                     System.out.println("数据库已成功连接!");
                     String sql = "select * from 选择题 where id=?";
-                    int cnt=0;
+                    int cnt = 0;
                     preparedstatement = con.prepareStatement(sql);
                     preparedstatement.setInt(1, Integer.valueOf(temp));
-                    resultset=preparedstatement.executeQuery();
-                    SelectProblem selected=new SelectProblem();
-                    while(resultset.next())
-                    {
+                    resultset = preparedstatement.executeQuery();
+                    SelectProblem selected = new SelectProblem();
+                    while (resultset.next()) {
                         cnt++;
                         selected.setId(resultset.getInt("id"));
                         selected.setDescription(resultset.getString("描述"));
@@ -136,31 +134,37 @@ public class GUI_TeaSelectUpdate extends JDialog {
                     }
                     con.close();
                     System.out.println("数据库已关闭!");
-                    if(cnt==1&&!temp.equals(textField1.getText())){
-                        flagg=-1;
+                    if (cnt == 1 && !temp.equals(textField1.getText())) {
+                        flagg = -1;
                         JOptionPane.showMessageDialog(null, "该新序号已在数据库中存在，请重新输入!", "警告", JOptionPane.ERROR_MESSAGE);
-                        textField4.setText("");textField3.setText("");
-                        textArea6.setText("");textArea7.setText("");textArea8.setText("");textArea9.setText("");textArea10.setText("");
-                    }
-                    else{
-                        flag[1]=1;
+                        textField4.setText("");
+                        textField3.setText("");
+                        textArea6.setText("");
+                        textArea7.setText("");
+                        textArea8.setText("");
+                        textArea9.setText("");
+                        textArea10.setText("");
+                    } else if (!temp.equals(textField1.getText())) {
+                        flag[1] = 1;
                         flagg++;
                     }
-                }
-                catch (SQLException eve) {
+                } catch (SQLException eve) {
                     System.out.println(eve);
                 }
-            }
-            else{
-                flagg=-1;
+            } else {
+                flagg = -1;
                 JOptionPane.showMessageDialog(null, "新序号应为数字,请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
-                textField4.setText("");textField3.setText("");
-                textArea6.setText("");textArea7.setText("");textArea8.setText("");textArea9.setText("");textArea10.setText("");
+                textField4.setText("");
+                textField3.setText("");
+                textArea6.setText("");
+                textArea7.setText("");
+                textArea8.setText("");
+                textArea9.setText("");
+                textArea10.setText("");
             }
         }
-        if(flagg>=0)
-        {
-            temp=textField3.getText();
+        if (flagg >= 0) {
+            temp = textField3.getText();
             if ((temp != null && !temp.trim().equals(""))) {
                 if (temp.equals("A") || temp.equals("B") || temp.equals("C") || temp.equals("D")) {
                     if (!temp.equals(textField2.getText())) {
@@ -180,56 +184,48 @@ public class GUI_TeaSelectUpdate extends JDialog {
                 }
             }
         }
-        if(flagg>=0)
-        {
-            temp=textArea6.getText();
+        if (flagg >= 0) {
+            temp = textArea6.getText();
             if ((temp != null && !temp.trim().equals(""))) {
-                if(!temp.equals(textArea1.getText()))
-                {
+                if (!temp.equals(textArea1.getText())) {
                     flagg++;
-                    flag[2]=1;
+                    flag[2] = 1;
                 }
             }
-            temp=textArea7.getText();
+            temp = textArea7.getText();
             if ((temp != null && !temp.trim().equals(""))) {
-                if(!temp.equals(textArea2.getText()))
-                {
+                if (!temp.equals(textArea2.getText())) {
                     flagg++;
-                    flag[3]=1;
+                    flag[3] = 1;
                 }
             }
-            temp=textArea8.getText();
+            temp = textArea8.getText();
             if ((temp != null && !temp.trim().equals(""))) {
-                if(!temp.equals(textArea3.getText()))
-                {
+                if (!temp.equals(textArea3.getText())) {
                     flagg++;
-                    flag[4]=1;
+                    flag[4] = 1;
                 }
             }
-            temp=textArea9.getText();
+            temp = textArea9.getText();
             if ((temp != null && !temp.trim().equals(""))) {
-                if(!temp.equals(textArea4.getText()))
-                {
+                if (!temp.equals(textArea4.getText())) {
                     flagg++;
-                    flag[5]=1;
+                    flag[5] = 1;
                 }
             }
-            temp=textArea10.getText();
+            temp = textArea10.getText();
             if ((temp != null && !temp.trim().equals(""))) {
-                if(!temp.equals(textArea5.getText()))
-                {
+                if (!temp.equals(textArea5.getText())) {
                     flagg++;
-                    flag[6]=1;
+                    flag[6] = 1;
                 }
             }
         }
-        if(flagg>0)
-        {
+        if (flagg > 0) {
             try {
                 Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
                 System.out.println("数据库驱动已成功启动!");
-            }
-            catch (Exception ex){
+            } catch (Exception ex) {
                 System.out.println(ex.toString());
             }
             try {
@@ -240,66 +236,56 @@ public class GUI_TeaSelectUpdate extends JDialog {
                         if (i == 1) {
                             String sql = "update 选择题 set id=? where id=?";
                             preparedstatement = con.prepareStatement(sql);
-                            preparedstatement.setInt(1,Integer.valueOf(textField4.getText()));
-                            preparedstatement.setInt(2,Integer.valueOf(textField1.getText()));
+                            preparedstatement.setInt(1, Integer.valueOf(textField4.getText()));
+                            preparedstatement.setInt(2, Integer.valueOf(textField1.getText()));
                             preparedstatement.executeUpdate();
                             textField1.setText(textField4.getText());
                             textField4.setText("");
-                        }
-                        else if(i==2){
+                        } else if (i == 2) {
                             String sql = "update 选择题 set 描述=? where id=?";
                             preparedstatement = con.prepareStatement(sql);
-                            preparedstatement.setString(1,textArea6.getText());
-                            preparedstatement.setInt(2,Integer.valueOf(textField1.getText()));
+                            preparedstatement.setString(1, textArea6.getText());
+                            preparedstatement.setInt(2, Integer.valueOf(textField1.getText()));
                             preparedstatement.executeUpdate();
                             textArea1.setText(textArea6.getText());
                             textArea6.setText("");
-                        }
-                        else if(i==3){
+                        } else if (i == 3) {
                             String sql = "update 选择题 set A=? where id=?";
                             preparedstatement = con.prepareStatement(sql);
-                            preparedstatement.setString(1,textArea7.getText());
-                            preparedstatement.setInt(2,Integer.valueOf(textField1.getText()));
+                            preparedstatement.setString(1, textArea7.getText());
+                            preparedstatement.setInt(2, Integer.valueOf(textField1.getText()));
                             preparedstatement.executeUpdate();
                             textArea2.setText(textArea7.getText());
                             textArea7.setText("");
-                        }
-                        else if(i==4)
-                        {
+                        } else if (i == 4) {
                             String sql = "update 选择题 set B=? where id=?";
                             preparedstatement = con.prepareStatement(sql);
-                            preparedstatement.setString(1,textArea8.getText());
-                            preparedstatement.setInt(2,Integer.valueOf(textField1.getText()));
+                            preparedstatement.setString(1, textArea8.getText());
+                            preparedstatement.setInt(2, Integer.valueOf(textField1.getText()));
                             preparedstatement.executeUpdate();
                             textArea3.setText(textArea8.getText());
                             textArea8.setText("");
-                        }
-                        else if(i==5)
-                        {
+                        } else if (i == 5) {
                             String sql = "update 选择题 set C=? where id=?";
                             preparedstatement = con.prepareStatement(sql);
-                            preparedstatement.setString(1,textArea9.getText());
-                            preparedstatement.setInt(2,Integer.valueOf(textField1.getText()));
+                            preparedstatement.setString(1, textArea9.getText());
+                            preparedstatement.setInt(2, Integer.valueOf(textField1.getText()));
                             preparedstatement.executeUpdate();
                             textArea4.setText(textArea9.getText());
                             textArea9.setText("");
-                        }
-                        else if(i==6)
-                        {
+                        } else if (i == 6) {
                             String sql = "update 选择题 set D=? where id=?";
                             preparedstatement = con.prepareStatement(sql);
-                            preparedstatement.setString(1,textArea10.getText());
-                            preparedstatement.setInt(2,Integer.valueOf(textField1.getText()));
+                            preparedstatement.setString(1, textArea10.getText());
+                            preparedstatement.setInt(2, Integer.valueOf(textField1.getText()));
                             preparedstatement.executeUpdate();
                             textArea5.setText(textArea10.getText());
                             textArea10.setText("");
-                        }
-                        else if(i==7)
-                        {
+                        } else if (i == 7) {
                             String sql = "update 选择题 set 答案=? where id=?";
                             preparedstatement = con.prepareStatement(sql);
-                            preparedstatement.setString(1,textField3.getText());
-                            preparedstatement.setInt(2,Integer.valueOf(textField1.getText()));
+                            preparedstatement.setString(1, textField3.getText());
+                            preparedstatement.setInt(2, Integer.valueOf(textField1.getText()));
                             preparedstatement.executeUpdate();
                             textField2.setText(textField3.getText());
                             textField3.setText("");
@@ -308,11 +294,11 @@ public class GUI_TeaSelectUpdate extends JDialog {
                 }
                 JOptionPane.showMessageDialog(null, "修改成功!", "选择题修改记录", JOptionPane.PLAIN_MESSAGE);
                 statement = con.createStatement();
-                String sql1="select * from 选择题";
-                resultset=statement.executeQuery(sql1);
+                String sql1 = "select * from 选择题";
+                resultset = statement.executeQuery(sql1);
                 System.out.println("查询成功!");
                 GUI_TeaSelect.data.clear();
-                while(resultset.next()) {
+                while (resultset.next()) {
                     SelectProblem tempp = new SelectProblem();
                     tempp.setId(resultset.getInt("id"));
                     tempp.setDescription(resultset.getString("描述"));
@@ -327,13 +313,12 @@ public class GUI_TeaSelectUpdate extends JDialog {
                 con.close();
                 System.out.println("数据库已关闭!");
 
+            } catch (SQLException eve) {
+                System.out.println(eve);
             }
-            catch (SQLException eve) {
-                        System.out.println(eve);
-            }
-        }
-        else if(flagg==0){
+        } else if (flagg == 0) {
             JOptionPane.showMessageDialog(null, "当前状态不进行修改!", "选择题修改记录", JOptionPane.PLAIN_MESSAGE);
+            textField4.setText("");textField3.setText("");textArea6.setText("");textArea7.setText("");textArea8.setText("");textArea9.setText("");textArea10.setText("");
         }
     }
 

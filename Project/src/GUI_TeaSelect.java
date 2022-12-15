@@ -176,7 +176,7 @@ public class GUI_TeaSelect extends JDialog {
         label1 = new JLabel();
         button1 = new JButton();
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
+        table1 = new JTable(){public boolean isCellEditable(int row, int column) { return false; }};
         button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
