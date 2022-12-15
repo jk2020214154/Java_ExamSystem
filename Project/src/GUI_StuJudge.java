@@ -54,27 +54,23 @@ public class GUI_StuJudge extends JDialog {
     }
     public GUI_StuJudge(Window owner) {
         super(owner);
-        GUI_Student.GUI_Studentflag=1;
         initComponents();
-        addWindowListener(new WindowAdapter() {//设置关闭监视器
-            public void windowClosing(WindowEvent eve){
-                GUI_Student.GUI_Studentflag=0;
-            }
-        });
         sqlinit();
     }
 
-    private void button1(ActionEvent e) {
+    private void button3(ActionEvent e) {
         // TODO add your code here
         this.dispose();
-        GUI_Student.GUI_Studentflag = 0;
+        GUI_Student.visited[1]=1;
     }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         ResourceBundle bundle = ResourceBundle.getBundle("Form");
         label1 = new JLabel();
-        button1 = new JButton();
+        button3 = new JButton();
 
         //======== this ========
         setTitle(bundle.getString("this.title_8"));
@@ -88,11 +84,11 @@ public class GUI_StuJudge extends JDialog {
         contentPane.add(label1);
         label1.setBounds(200, 15, 275, label1.getPreferredSize().height);
 
-        //---- button1 ----
-        button1.setText(bundle.getString("button1.text_9"));
-        button1.addActionListener(e -> button1(e));
-        contentPane.add(button1);
-        button1.setBounds(530, 365, 100, 36);
+        //---- button3 ----
+        button3.setText(bundle.getString("button3.text_17"));
+        button3.addActionListener(e -> button3(e));
+        contentPane.add(button3);
+        button3.setBounds(530, 360, 100, 36);
 
         {
             // compute preferred size
@@ -115,6 +111,6 @@ public class GUI_StuJudge extends JDialog {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JLabel label1;
-    private JButton button1;
+    private JButton button3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

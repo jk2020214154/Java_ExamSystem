@@ -12,9 +12,9 @@ import javax.swing.*;
  * @author Brainrain
  */
 public class GUI_Student extends JFrame {
-    public static int GUI_Studentflag=0;
     public static int visited[]=new int[3];
     public static int score[]=new int[3];
+    public static int problemnum[]=new int[3];
     public GUI_Student() {
         initComponents();
         textField2.setText(" "+GUI_Login.username);
@@ -38,23 +38,10 @@ public class GUI_Student extends JFrame {
         });
     }
 
-    private void button1(ActionEvent e) {
-        // TODO add your code here
-        if(GUI_Studentflag==0)
-            new GUI_StuSelect(this).setVisible(true);
-    }
 
-    private void button2(ActionEvent e) {
-        // TODO add your code here
-        if(GUI_Studentflag==0)
-            new GUI_StuJudge(this).setVisible(true);
-    }
 
-    private void button3(ActionEvent e) {
-        // TODO add your code here
-        if(GUI_Studentflag==0)
-            new GUI_StuQuestion(this).setVisible(true);
-    }
+
+
 
     private void button5(ActionEvent e) {
         // TODO add your code here
@@ -62,45 +49,128 @@ public class GUI_Student extends JFrame {
 
     private void button4(ActionEvent e) {
         // TODO add your code here
-        if(GUI_Studentflag==0) {
             JOptionPane.showMessageDialog(null, "在线考试系统退出成功！", "退出系统", JOptionPane.PLAIN_MESSAGE);
             System.exit(0);
-        }
     }
 
     private void menuItem9(ActionEvent e) {
         // TODO add your code here
-        if(GUI_Studentflag==0) {
             JOptionPane.showMessageDialog(null, "在线考试系统退出成功！", "退出系统", JOptionPane.PLAIN_MESSAGE);
             System.exit(0);
-        }
     }
     private void menuItem8(ActionEvent e) {
         // TODO add your code here
-        if(GUI_Studentflag==0) {
             this.dispose();
             JOptionPane.showMessageDialog(null, "学生端注销登录成功！", "注销登录", JOptionPane.PLAIN_MESSAGE);
             new GUI_Login().setVisible(true);
-        }
     }
 
     private void menuItem1(ActionEvent e) {
         // TODO add your code here
-        if(GUI_Studentflag==0)
+        if(visited[0]==0)
             new GUI_StuSelect(this).setVisible(true);
+        else{
+            JOptionPane.showMessageDialog(null, "当前已完成选择题，不可再进行访问！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void menuItem2(ActionEvent e) {
         // TODO add your code here
-        if(GUI_Studentflag==0)
+        if(visited[0]==1&&visited[1]==0)
             new GUI_StuJudge(this).setVisible(true);
+        else if(visited[1]==1) {
+            JOptionPane.showMessageDialog(null, "当前已完成判断题，不可再进行访问！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(visited[1]==0){
+            JOptionPane.showMessageDialog(null, "请先完成选择题后再进行判断题。", "警告", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void menuItem3(ActionEvent e) {
         // TODO add your code here
-        if(GUI_Studentflag==0)
+        if(visited[0]==1&&visited[1]==1&&visited[2]==0)
             new GUI_StuQuestion(this).setVisible(true);
+        else if(visited[2]==1)
+        {
+            JOptionPane.showMessageDialog(null, "当前已完成简答题，不可再进行访问！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(visited[2]==0)
+        {
+            JOptionPane.showMessageDialog(null, "请先完成选择题和判断题后再进行简答题。", "警告", JOptionPane.ERROR_MESSAGE);
+        }
     }
+
+    private void button6(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==1&&visited[1]==1&&visited[2] == 1)
+        {
+            int res=score[0]+score[1]+score[2];
+            int tot=5*(problemnum[0]+problemnum[1]+problemnum[2]);
+            String temp="";
+            temp="选择题："+score[0]+"分，判断题："+score[1]+"分，简答题："+score[2] + "分\n总分："+res+"分";
+            JOptionPane.showMessageDialog(null, temp, "获取总分", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "请先完成所有题型后再获取总分！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void button7(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==0)
+            new GUI_StuSelect(this).setVisible(true);
+        else{
+            JOptionPane.showMessageDialog(null, "当前已完成选择题，不可再进行访问！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void button8(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==1&&visited[1]==0)
+            new GUI_StuJudge(this).setVisible(true);
+        else if(visited[1]==1) {
+            JOptionPane.showMessageDialog(null, "当前已完成判断题，不可再进行访问！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(visited[1]==0){
+            JOptionPane.showMessageDialog(null, "请先完成选择题后再进行判断题。", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void button9(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==1&&visited[1]==1&&visited[2]==0)
+            new GUI_StuQuestion(this).setVisible(true);
+        else if(visited[2]==1)
+        {
+            JOptionPane.showMessageDialog(null, "当前已完成简答题，不可再进行访问！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(visited[2]==0)
+        {
+            JOptionPane.showMessageDialog(null, "请先完成选择题和判断题后再进行简答题。", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void menuItem11(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==1){
+            JOptionPane.showMessageDialog(null, "选择题题目数："+problemnum[0]+"道", "选择题题目数", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "当前未进行选择题作答，无法展示结果！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
+    private void menuItem4(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==1){
+            JOptionPane.showMessageDialog(null, "选择题分数："+score[0]+"分", "选择题分数", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "当前未进行选择题作答，无法展示结果！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -110,7 +180,12 @@ public class GUI_Student extends JFrame {
         menuItem1 = new JMenuItem();
         menuItem2 = new JMenuItem();
         menuItem3 = new JMenuItem();
-        menu2 = new JMenu();
+        menu4 = new JMenu();
+        menuItem11 = new JMenuItem();
+        menuItem12 = new JMenuItem();
+        menuItem13 = new JMenuItem();
+        menuItem14 = new JMenuItem();
+        menu5 = new JMenu();
         menuItem4 = new JMenuItem();
         menuItem5 = new JMenuItem();
         menuItem6 = new JMenuItem();
@@ -122,14 +197,16 @@ public class GUI_Student extends JFrame {
         label1 = new JLabel();
         label2 = new JLabel();
         textField1 = new JTextField();
-        button1 = new JButton();
-        button2 = new JButton();
-        button3 = new JButton();
         button5 = new JButton();
         button4 = new JButton();
         label3 = new JLabel();
         textField2 = new JTextField();
         button6 = new JButton();
+        label4 = new JLabel();
+        label5 = new JLabel();
+        button7 = new JButton();
+        button8 = new JButton();
+        button9 = new JButton();
 
         //======== this ========
         setTitle(bundle.getString("this.title_6"));
@@ -162,27 +239,51 @@ public class GUI_Student extends JFrame {
             }
             menuBar1.add(menu1);
 
-            //======== menu2 ========
+            //======== menu4 ========
             {
-                menu2.setText(bundle.getString("menu2.text_2"));
+                menu4.setText(bundle.getString("menu4.text"));
+
+                //---- menuItem11 ----
+                menuItem11.setText(bundle.getString("menuItem11.text"));
+                menuItem11.addActionListener(e -> menuItem11(e));
+                menu4.add(menuItem11);
+
+                //---- menuItem12 ----
+                menuItem12.setText(bundle.getString("menuItem12.text"));
+                menu4.add(menuItem12);
+
+                //---- menuItem13 ----
+                menuItem13.setText(bundle.getString("menuItem13.text"));
+                menu4.add(menuItem13);
+
+                //---- menuItem14 ----
+                menuItem14.setText(bundle.getString("menuItem14.text"));
+                menu4.add(menuItem14);
+            }
+            menuBar1.add(menu4);
+
+            //======== menu5 ========
+            {
+                menu5.setText(bundle.getString("menu5.text"));
 
                 //---- menuItem4 ----
                 menuItem4.setText(bundle.getString("menuItem4.text_2"));
-                menu2.add(menuItem4);
+                menuItem4.addActionListener(e -> menuItem4(e));
+                menu5.add(menuItem4);
 
                 //---- menuItem5 ----
                 menuItem5.setText(bundle.getString("menuItem5.text_2"));
-                menu2.add(menuItem5);
+                menu5.add(menuItem5);
 
                 //---- menuItem6 ----
                 menuItem6.setText(bundle.getString("menuItem6.text"));
-                menu2.add(menuItem6);
+                menu5.add(menuItem6);
 
                 //---- menuItem7 ----
                 menuItem7.setText(bundle.getString("menuItem7.text"));
-                menu2.add(menuItem7);
+                menu5.add(menuItem7);
             }
-            menuBar1.add(menu2);
+            menuBar1.add(menu5);
 
             //======== menu3 ========
             {
@@ -228,39 +329,6 @@ public class GUI_Student extends JFrame {
         contentPane.add(textField1);
         textField1.setBounds(211, 137, 220, 30);
 
-        //---- button1 ----
-        button1.setText(bundle.getString("button1.text_5"));
-        button1.setFont(new Font("sansserif", Font.BOLD, 16));
-        button1.setForeground(Color.blue);
-        button1.addActionListener(e -> {
-			button1(e);
-			button1(e);
-		});
-        contentPane.add(button1);
-        button1.setBounds(135, 75, 85, 40);
-
-        //---- button2 ----
-        button2.setText(bundle.getString("button2.text_3"));
-        button2.setFont(new Font("sansserif", Font.BOLD, 16));
-        button2.setForeground(Color.blue);
-        button2.addActionListener(e -> {
-			button2(e);
-			button2(e);
-		});
-        contentPane.add(button2);
-        button2.setBounds(235, 75, 85, 40);
-
-        //---- button3 ----
-        button3.setText(bundle.getString("button3.text_4"));
-        button3.setFont(new Font("sansserif", Font.BOLD, 16));
-        button3.setForeground(Color.blue);
-        button3.addActionListener(e -> {
-			button3(e);
-			button3(e);
-		});
-        contentPane.add(button3);
-        button3.setBounds(340, 75, 85, 40);
-
         //---- button5 ----
         button5.setText(bundle.getString("button5.text_2"));
         button5.addActionListener(e -> button5(e));
@@ -294,8 +362,45 @@ public class GUI_Student extends JFrame {
         //---- button6 ----
         button6.setText(bundle.getString("button6.text"));
         button6.setFont(new Font("sansserif", Font.BOLD, 14));
+        button6.addActionListener(e -> button6(e));
         contentPane.add(button6);
         button6.setBounds(441, 110, 100, 35);
+
+        //---- label4 ----
+        label4.setText(bundle.getString("label4.text_8"));
+        label4.setFont(new Font("sansserif", Font.BOLD, 14));
+        contentPane.add(label4);
+        label4.setBounds(155, 50, 305, 21);
+
+        //---- label5 ----
+        label5.setText(bundle.getString("label5.text_5"));
+        label5.setFont(new Font("sansserif", Font.BOLD, 14));
+        contentPane.add(label5);
+        label5.setBounds(465, 70, 75, 30);
+
+        //---- button7 ----
+        button7.setText(bundle.getString("button7.text"));
+        button7.setFont(new Font("sansserif", Font.BOLD, 16));
+        button7.setForeground(Color.blue);
+        button7.addActionListener(e -> button7(e));
+        contentPane.add(button7);
+        button7.setBounds(135, 75, 85, 40);
+
+        //---- button8 ----
+        button8.setText(bundle.getString("button8.text"));
+        button8.setFont(new Font("sansserif", Font.BOLD, 16));
+        button8.setForeground(Color.blue);
+        button8.addActionListener(e -> button8(e));
+        contentPane.add(button8);
+        button8.setBounds(235, 75, 85, 40);
+
+        //---- button9 ----
+        button9.setText(bundle.getString("button9.text"));
+        button9.setFont(new Font("sansserif", Font.BOLD, 16));
+        button9.setForeground(Color.blue);
+        button9.addActionListener(e -> button9(e));
+        contentPane.add(button9);
+        button9.setBounds(340, 75, 85, 40);
 
         {
             // compute preferred size
@@ -322,7 +427,12 @@ public class GUI_Student extends JFrame {
     private JMenuItem menuItem1;
     private JMenuItem menuItem2;
     private JMenuItem menuItem3;
-    private JMenu menu2;
+    private JMenu menu4;
+    private JMenuItem menuItem11;
+    private JMenuItem menuItem12;
+    private JMenuItem menuItem13;
+    private JMenuItem menuItem14;
+    private JMenu menu5;
     private JMenuItem menuItem4;
     private JMenuItem menuItem5;
     private JMenuItem menuItem6;
@@ -334,13 +444,15 @@ public class GUI_Student extends JFrame {
     private JLabel label1;
     private JLabel label2;
     private JTextField textField1;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
     private JButton button5;
     private JButton button4;
     private JLabel label3;
     private JTextField textField2;
     private JButton button6;
+    private JLabel label4;
+    private JLabel label5;
+    private JButton button7;
+    private JButton button8;
+    private JButton button9;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

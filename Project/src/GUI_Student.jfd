@@ -46,45 +46,6 @@ new FormModel {
 				"y": 137
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": new FormMessage( null, "button1.text_5" )
-				"font": &Font0 new java.awt.Font( "sansserif", 1, 16 )
-				"foreground": sfield java.awt.Color blue
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 85
-				"height": 40
-				"x": 135
-				"y": 75
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
-				"text": new FormMessage( null, "button2.text_3" )
-				"font": #Font0
-				"foreground": sfield java.awt.Color blue
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2", true ) )
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 85
-				"height": 40
-				"x": 235
-				"y": 75
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button3"
-				"text": new FormMessage( null, "button3.text_4" )
-				"font": #Font0
-				"foreground": sfield java.awt.Color blue
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 85
-				"height": 40
-				"x": 340
-				"y": 75
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button5"
 				"text": new FormMessage( null, "button5.text_2" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button5", true ) )
@@ -129,11 +90,68 @@ new FormModel {
 				name: "button6"
 				"text": new FormMessage( null, "button6.text" )
 				"font": new java.awt.Font( "sansserif", 1, 14 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button6", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 441
 				"y": 110
 				"width": 100
 				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": new FormMessage( null, "label4.text_8" )
+				"font": new java.awt.Font( "sansserif", 1, 14 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 155
+				"y": 50
+				"width": 305
+				"height": 21
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": new FormMessage( null, "label5.text_5" )
+				"font": new java.awt.Font( "sansserif", 1, 14 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 465
+				"y": 70
+				"width": 75
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button7"
+				"text": new FormMessage( null, "button7.text" )
+				"font": new java.awt.Font( "sansserif", 1, 16 )
+				"foreground": sfield java.awt.Color blue
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button7", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 135
+				"y": 75
+				"width": 85
+				"height": 40
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button8"
+				"text": new FormMessage( null, "button8.text" )
+				"font": new java.awt.Font( "sansserif", 1, 16 )
+				"foreground": sfield java.awt.Color blue
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button8", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 235
+				"y": 75
+				"width": 85
+				"height": 40
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button9"
+				"text": new FormMessage( null, "button9.text" )
+				"font": new java.awt.Font( "sansserif", 1, 16 )
+				"foreground": sfield java.awt.Color blue
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button9", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 340
+				"y": 75
+				"width": 85
+				"height": 40
 			} )
 			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
 				name: "menuBar1"
@@ -157,11 +175,33 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
-					name: "menu2"
-					"text": new FormMessage( null, "menu2.text_2" )
+					name: "menu4"
+					"text": new FormMessage( null, "menu4.text" )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem11"
+						"text": new FormMessage( null, "menuItem11.text" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem11", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem12"
+						"text": new FormMessage( null, "menuItem12.text" )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem13"
+						"text": new FormMessage( null, "menuItem13.text" )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem14"
+						"text": new FormMessage( null, "menuItem14.text" )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu5"
+					"text": new FormMessage( null, "menu5.text" )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem4"
 						"text": new FormMessage( null, "menuItem4.text_2" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem4", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem5"

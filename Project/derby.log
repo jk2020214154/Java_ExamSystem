@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu Dec 15 15:32:59 CST 2022:
+Thu Dec 15 20:34:47 CST 2022:
 正在使用类加载程序 sun.misc.Launcher$AppClassLoader@18b4aac2 引导数据库
-目录 E:\大学\专业课\3.1Java\在线考试系统 中的 Derby 版本 The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) 实例 a816c00e-0185-14b3-6620-00000c573c00
+目录 E:\大学\专业课\3.1Java\在线考试系统 中的 Derby 版本 The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) 实例 a816c00e-0185-15c7-b2fb-00000c1e2dd0
 已从 file:/C:/Program%20Files/Java/db-derby-10.14.2.0-bin/lib/derby.jar 加载
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_341-b10
