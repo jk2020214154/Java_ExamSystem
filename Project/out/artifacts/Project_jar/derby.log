@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Fri Dec 16 20:27:25 CST 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-1ae7-527c-00000d13dc80 
+on database directory E:\大学\专业课\3.1Java\在线考试系统 with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+Loaded from file:/E:/%e5%a4%a7%e5%ad%a6/%e4%b8%93%e4%b8%9a%e8%af%be/3.1Java/Project/out/artifacts/Project_jar/Project.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_341-b10
+user.dir=E:\大学\专业课\3.1Java\Project\out\artifacts\Project_jar
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

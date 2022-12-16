@@ -27,12 +27,12 @@
 > ##### ----------GUI_TeaQuestionUpdate(*)
 > #### GUI_TeaHelp(*)
 
-### 学生端登录GUI_Student(未)
+### 学生端登录GUI_Student
 
 > #### GUI_StuSelect
 > #### GUI_StuJudge
 > #### GUI_StuQuestion
-> #### GUI_StuHelp(未写)
+> #### GUI_StuHelp
 
 ## 辅助结构体 SelectProblem、JudgeProblem、QuestionProblem
 
@@ -44,5 +44,5 @@
 
 3.教师端现已实现删除和刷新和增加和查询和修改的操作,界面大体设计好;
 
-4.准备学生端的界面设计
+4.完成学生端的界面设计
 
