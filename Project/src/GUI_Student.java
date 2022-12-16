@@ -45,6 +45,7 @@ public class GUI_Student extends JFrame {
 
     private void button5(ActionEvent e) {
         // TODO add your code here
+        new GUI_StuHelp(this).setVisible(true);
     }
 
     private void button4(ActionEvent e) {
@@ -107,7 +108,7 @@ public class GUI_Student extends JFrame {
             int res=score[0]+score[1]+score[2];
             int tot=5*(problemnum[0]+problemnum[1]+problemnum[2]);
             String temp="";
-            temp="选择题："+score[0]+"分，判断题："+score[1]+"分，简答题："+score[2] + "分\n总分："+res+"分";
+            temp="选择题："+score[0]+"分，判断题："+score[1]+"分，简答题："+score[2] + "分\n总分："+res+"分，题目总分："+tot+"分";
             JOptionPane.showMessageDialog(null, temp, "获取总分", JOptionPane.PLAIN_MESSAGE);
         }
         else{
@@ -170,6 +171,84 @@ public class GUI_Student extends JFrame {
             JOptionPane.showMessageDialog(null, "当前未进行选择题作答，无法展示结果！", "警告", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    private void menuItem12(ActionEvent e) {
+        // TODO add your code here
+        if(visited[1]==1){
+            JOptionPane.showMessageDialog(null, "判断题题目数："+problemnum[1]+"道", "判断题题目数", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "当前未进行判断题作答，无法展示结果！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void menuItem5(ActionEvent e) {
+        // TODO add your code here
+        if(visited[1]==1){
+            JOptionPane.showMessageDialog(null, "判断题分数："+score[1]+"分", "判断题分数", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "当前未进行判断题作答，无法展示结果！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void menuItem13(ActionEvent e) {
+        // TODO add your code here
+        if(visited[2]==1){
+            JOptionPane.showMessageDialog(null, "简答题题目数："+problemnum[2]+"道", "简答题题目数", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "当前未进行简答题作答，无法展示结果！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void menuItem6(ActionEvent e) {
+        // TODO add your code here
+        if(visited[2]==1){
+            JOptionPane.showMessageDialog(null, "简答题分数："+score[2]+"分", "简答题分数", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "当前未进行简答题作答，无法展示结果！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void menuItem7(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==1&&visited[1]==1&&visited[2] == 1)
+        {
+            int res=score[0]+score[1]+score[2];
+            int tot=5*(problemnum[0]+problemnum[1]+problemnum[2]);
+            String temp="";
+            temp="选择题："+score[0]+"分，判断题："+score[1]+"分，简答题："+score[2] + "分\n总分："+res+"分，题目总分："+tot+"分";
+            JOptionPane.showMessageDialog(null, temp, "获取总分", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "请先完成所有题型后再获取总分！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void menuItem14(ActionEvent e) {
+        // TODO add your code here
+        if(visited[0]==1&&visited[1]==1&&visited[2] == 1)
+        {
+            int res=problemnum[0]+problemnum[1]+problemnum[2];
+            String temp="";
+            temp="选择题："+problemnum[0]+"道，判断题："+problemnum[1]+"道，简答题："+problemnum[2] + "道\n总题数："+res+"道";
+            JOptionPane.showMessageDialog(null, temp, "获取总题数", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "请先完成所有题型后再获取总题数！", "警告", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void menuItem10(ActionEvent e) {
+        // TODO add your code here
+        new GUI_StuHelp(this).setVisible(true);
+    }
+
+
+
+
 
 
     private void initComponents() {
@@ -250,14 +329,17 @@ public class GUI_Student extends JFrame {
 
                 //---- menuItem12 ----
                 menuItem12.setText(bundle.getString("menuItem12.text"));
+                menuItem12.addActionListener(e -> menuItem12(e));
                 menu4.add(menuItem12);
 
                 //---- menuItem13 ----
                 menuItem13.setText(bundle.getString("menuItem13.text"));
+                menuItem13.addActionListener(e -> menuItem13(e));
                 menu4.add(menuItem13);
 
                 //---- menuItem14 ----
                 menuItem14.setText(bundle.getString("menuItem14.text"));
+                menuItem14.addActionListener(e -> menuItem14(e));
                 menu4.add(menuItem14);
             }
             menuBar1.add(menu4);
@@ -273,14 +355,17 @@ public class GUI_Student extends JFrame {
 
                 //---- menuItem5 ----
                 menuItem5.setText(bundle.getString("menuItem5.text_2"));
+                menuItem5.addActionListener(e -> menuItem5(e));
                 menu5.add(menuItem5);
 
                 //---- menuItem6 ----
                 menuItem6.setText(bundle.getString("menuItem6.text"));
+                menuItem6.addActionListener(e -> menuItem6(e));
                 menu5.add(menuItem6);
 
                 //---- menuItem7 ----
                 menuItem7.setText(bundle.getString("menuItem7.text"));
+                menuItem7.addActionListener(e -> menuItem7(e));
                 menu5.add(menuItem7);
             }
             menuBar1.add(menu5);
@@ -296,6 +381,7 @@ public class GUI_Student extends JFrame {
 
                 //---- menuItem10 ----
                 menuItem10.setText(bundle.getString("menuItem10.text"));
+                menuItem10.addActionListener(e -> menuItem10(e));
                 menu3.add(menuItem10);
 
                 //---- menuItem9 ----

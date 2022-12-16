@@ -93,7 +93,7 @@ public class GUI_StuSelect extends JDialog {
             GUI_Student.visited[0] = 1;
             GUI_Student.problemnum[0] = tempnum;
             GUI_Student.score[0]=tempscore;
-            JOptionPane.showMessageDialog(null, "选择题已作答完毕，获得分数为"+tempscore+"分！", "选择题确认题目数", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "选择题已作答完毕，获得分数为"+tempscore+"分！", "选择题提交结果", JOptionPane.PLAIN_MESSAGE);
         }
         else{
             JOptionPane.showMessageDialog(null, "未确定题目数时不能进行提交操作！", "警告", JOptionPane.ERROR_MESSAGE);
@@ -110,7 +110,7 @@ public class GUI_StuSelect extends JDialog {
                     tempnum = Integer.parseInt(temp);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "题目数应小于选择题题目数"+data.size()+"!", "警告", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "题目数应小于等于选择题题目数"+data.size()+"!", "警告", JOptionPane.ERROR_MESSAGE);
                     textField1.setText("");
                 }
             }
@@ -256,7 +256,7 @@ public class GUI_StuSelect extends JDialog {
         button2.setText(bundle.getString("button2.text_20"));
         button2.addActionListener(e -> button2(e));
         contentPane.add(button2);
-        button2.setBounds(205, 49, 115, 36);
+        button2.setBounds(210, 50, 115, 36);
 
         //---- button3 ----
         button3.setText(bundle.getString("button3.text_15"));
